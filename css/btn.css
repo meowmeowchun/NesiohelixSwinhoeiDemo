@@ -1,0 +1,52 @@
+/* From Uiverse.io by joe-watson-sbf */ 
+.main-btn {
+    text-decoration: none; /* 移除下劃線 */
+    font-family: Arial, sans-serif; /* 更改字體 */
+    font-size: 1rem;
+    background: transparent;
+    border: none;
+    padding: 1em 1.5em;
+    color: #f1efd7;
+    text-transform: uppercase;
+    position: relative;
+    transition: 0.5s ease;
+    cursor: pointer;
+  }
+  
+  .main-btn::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 5px;
+    width: 0;
+    background-color: #26506f;
+    transition: 0.5s ease;
+  }
+  
+  .main-btn:hover {
+    color: #8ac672;
+    transition-delay: 0.5s;
+  }
+  
+  .main-btn:hover::before {
+    width: 100%;
+  }
+  
+  .main-btn::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 0;
+    width: 100%;
+    background-color: #26506f;
+    transition: 0.4s ease;
+    z-index: -1;
+  }
+  
+  .main-btn:hover::after {
+    height: 100%;
+    transition-delay: 0.4s;
+    color: aliceblue;
+  }

@@ -1,0 +1,465 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+@font-face {
+  font-family: SerialPublication;
+  src: url(../font/Serialpublicationdemo-qxo1.ttf);
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: OpenHuninn;
+  src: url(../font/jf-openhuninn-2.1.ttf);
+}
+
+#site-header{
+  width: 100%;
+  height: 180px;
+  position: absolute;
+}
+
+@media (max-width: 1024px) {
+  #site-header{
+    width: 100%;
+    height: 90px;
+    position:absolute;
+  }
+}
+
+.header-flex{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.left-side-main{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.artist-logo .header-logo-desktop .logo-img{
+  width: 10rem;
+  height: 10rem;
+  margin-left: 2rem;
+  margin-top: 1rem;
+}
+
+.logo-img {
+  transition: transform 0.3s ease-in-out;
+}
+
+.logo-img:hover {
+  transform: scale(1.1) ; 
+}
+
+.right-side-main{
+  display: flex;
+  justify-content: center;
+  padding-right: 1rem;
+}
+
+@media (max-width: 750px) {
+  .right-side-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10%;
+  }
+
+}
+
+.nav-toggle {
+  display: none;
+  cursor: pointer;
+}
+
+.nav-toggle.active + .right-side-main {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 60px; /* 根據你的header高度調整 */
+  right: 0;
+  background-color: #fff;
+  width: 100%;
+  z-index: 1000;
+}
+
+.main-btn{
+  margin:0.5rem;
+}
+
+
+.blank-section{;
+  min-height: 100vh;
+}
+
+#music, #videos, #merch, #mailing-list{
+  background-color: black;
+}
+.section-header {
+  background-color: #26506F;
+  padding: 1rem 3.5rem;
+  width: 100%;
+  margin: auto;
+  display: flex ;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  font-family: 'SerialPublication';
+  letter-spacing: 0.3rem;
+}
+
+.section-header h2{
+  font-size: 3rem;
+  color: #8ac672; 
+}
+
+.album-grid-layout{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0px;
+}
+
+.album{
+  min-width: 100%;
+  height: 100%;
+  text-align: center;
+  align-items: center;
+  padding: 0.2rem;
+  background-color:black;
+  border: 1px solid #8ac672;
+  position: relative; /* 為容器啟用定位 */
+}
+
+.album {
+  position: relative;
+  overflow: hidden;
+}
+
+.album::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* 黑色遮罩，透明度50% */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 2;
+}
+
+.album:hover::before {
+  opacity: 1;
+}
+
+.album img{
+  max-width: 100%;
+  height: auto;
+}
+.album h3{  
+  position: absolute; /* 讓文字絕對定位 */
+  top: 50%;           /* 使文字垂直置中 */
+  left: 50%;          /* 使文字水平置中 */
+  transform: translate(-50%, -50%); /* 精確居中對齊文字 */
+  color: white;       /* 讓文字顏色變為白色，避免與背景顏色混淆 */
+  font-size: 1.8rem;    /* 字體大小可以調整 */
+  font-family: 'OpenHuninn';
+  font-weight: lighter;
+  display: none;
+  z-index: 3;
+}
+
+.album:hover h3{
+  display: block;
+  transition: 0.5s;
+}
+
+.album p, .merch h4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+  width: 100%; /* 讓p元素佔滿父元素的寬度 */
+  height: 100%; /* 讓p元素佔滿父元素的高度 */
+  transform: rotate(30deg); /* 傾斜30度 */
+  font-size: 2rem; /* 調整字體大小 */
+  color: white; /* 調整文字顏色 */
+  position: absolute; /* 設定絕對定位 */
+  top: 0;
+  left: 0;
+  z-index: 1; /* 設定z-index為1，確保在遮罩底下 */
+  font-family: 'Times New Roman', Times, serif;
+}
+
+.videos-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0rem;
+}
+
+.videos-img {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #8ac672;
+}
+
+.videos-img img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.videos-img h3 {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  z-index: 2;
+  font-family: 'OpenHuninn';
+  font-weight: lighter;
+}
+
+.videos-img::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* 黑色遮罩，透明度50% */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.videos-img:hover::before {
+  opacity: 1;
+}
+
+.videos-img:hover h3 {
+  display: block;
+}
+
+.merch-grid-layout {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0rem;
+}
+
+.merch-grid-layout img {
+  width: 100%;
+  height: auto;
+  display: block;
+  padding: 3rem;
+}
+
+.merch {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid #8ac672;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.merch img {
+  width: 100%; /* 讓圖片寬度佔滿父元素 */
+  height: auto; /* 自動調整高度以保持比例 */
+  max-width: auto; /* 設定圖片的最大寬度 */
+  max-height: 60vh; /* 設定圖片的最大高度 */
+  object-fit: contain; /* 確保圖片覆蓋整個區域 */
+}
+
+.merch h3, .merch p{
+  color: white;
+  margin: 0.5rem 0;
+}
+
+.merch .main-btn {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 2;
+}
+
+.merch:hover .main-btn {
+  display: block;
+}
+
+.merch::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* 黑色遮罩，透明度50% */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 2;
+}
+
+.merch:hover::before {
+  opacity: 1;
+}
+
+
+.mailing-list-content {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.mailing-list-content p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  color: #fff;
+  background-color: black;
+  letter-spacing: 0.2rem;
+}
+
+.mailing-list-content form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.mailing-list-content input[type="email"] {
+  padding: 0.5rem;
+  font-size: 1rem;
+  width: 100%;
+  max-width: 400px;
+  border: 1px solid #8ac672;
+  border-radius: 4px;
+}
+
+.mailing-list-content .main-btn {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: transparent;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+#mailing-list{
+  min-height: 100vh;
+  width: 100%;                      /* 設定區塊的寬度 */
+  height: auto;               /* 設定區塊的高度 */
+  background-image: url('../img/DSC06065.JPG'); /* 設定背景圖片 */
+  background-size: cover;           /* 背景按比例縮放，覆蓋整個容器 */
+  background-position: center;      /* 背景圖片居中對齊 */
+  background-repeat: no-repeat;     /* 防止圖片重複 */
+}
+
+/* From Uiverse.io by alexruix */ 
+.input-group {
+  display: flex;
+  align-items: center;
+  margin-top: 20%;
+}
+
+.input {
+  min-height: 50px;
+  max-width: 150px;
+  padding: 0 1rem;
+  color: black;
+  font-size: 15px;
+  border: 1px solid #26506F;
+  border-radius: 6px 0 0 6px;
+  background-color: rgba(256, 256, 256, 0.5)
+}
+
+.button--submit {
+  min-height: 50px;
+  padding: .5em 1em;
+  border: none;
+  border-radius: 0 6px 6px 0;
+  background-color: #8ac672;
+  color: #26506F;
+  font-size: 15px;
+  cursor: pointer;
+  transition: background-color .3s ease-in-out;
+}
+
+.button--submit:hover {
+  background-color: #26506F;
+  color: #8ac672;
+}
+
+.input:focus, .input:focus-visible {
+  border-color: #3898EC;
+  outline: none;
+}
+
+footer{
+  background-color: #142b3b;
+  color: #8ac672;
+  text-align: center;
+  padding: 1rem;
+  font-family: 'openHuninn';
+}
+
+.album, .videos-img, .merch {
+  position: relative;
+  overflow: hidden;
+}
+
+.album img, .videos-img img, .merch img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.album h3, .videos-img h3, .merch h3 {
+  display: none;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-size: 1.5rem;
+  text-align: center;
+  z-index: 2;
+}
+
+.album:hover h3, .videos-img:hover h3, .merch:hover h3 {
+  display: block;
+}
+
+.album::before, .videos-img::before, .merch::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5); /* 黑色遮罩，透明度50% */
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.album:hover::before, .videos-img:hover::before, .merch:hover::before {
+  opacity: 1;
+}
